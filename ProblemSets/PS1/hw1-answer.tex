@@ -1,0 +1,151 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize\textsl{Page \thepage\ of \pageref{LastPage}}}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{listings}
+\lstset{frame=single,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{harvard}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+%\numberwithin{equation}{section}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\newcommand\boldline{\arrayrulewidth{1pt}\hline}
+
+
+\begin{document}
+
+\begin{flushleft}
+  \textbf{\large{Problem Set \#1}} \\
+  MACS 30150, Dr. Evans \\
+  Dongcheng Yang
+\end{flushleft}
+
+\vspace{5mm}
+
+\noindent\textbf{Problem 1}
+Classify a model from a journal.
+~\\
+~\\
+\noindent\textbf{Part (a).} The model that I choose is from the paper "Sales Taxes and Internet Commerce" published on American Economic Review.
+~\\
+~\\
+\noindent\textbf{Part (b).} Einav, L., Knoepfle, D., Levin, J., & Sundaresan, N. (2014). Sales taxes and internet commerce. American Economic Review, 104(1), 1-26.
+~\\
+~\\
+\noindent\textbf{Part (c).}
+In the following equation, k index the items, i index the viewers of each item. It is assumed that 
+\begin{equation*}
+  Pr\left(i\;buys\;k\;|\;i\;views\;k\right)  =  \frac{exp\left(u_{ik}\right)}{1\;+\; exp\left(u_{ik}\right)}
+\end{equation*}
+where
+\begin{equation*}
+u_{ik} = \alpha_{k} + \beta\log\left(1+\tau_{ik}\right) + g\left(d_{ik}\right) + \gamma\mathbf{1}\left\{state\;i = state\;k\right\}
+\end{equation*}
+The first term $\alpha_{k}$ is a fixed effect that captures each item's general desirability. The second term is the effect of the relevant tax rate $\tau_{ik}$ and it is equivalent to the combined sales tax in the items ZIP code if i is a same-state buyer, and zero otherwise. The distance between the buyer and seller, denoted $d_{ik}$, serves as a control to account for the possibility that buyers may prefer nearby items. The last item is a dummy variable indicating whether the buyer is located in the same state as the item.
+~\\
+~\\
+\noindent\textbf{Part (d).}
+In this model, only the conditional probability variable and $u_{ik}$ are endogenous. The general desirability variable $\alpha_{k}$, relevant tax rate variable $\tau_{ik}$, distance variable $d_{ik}$ and dummy variable are all exogenous. 
+~\\
+~\\
+\noindent\textbf{Part (e).} 
+This model is a static, nonlinear and deterministic model.
+~\\
+~\\
+\noindent\textbf{Part (f).}
+To estimate the purchase decision, we should also consider personal preference over different kinds of commodities. Thus, apart from the distance variable indicating consumers' preference over nearby items, some other measurement of individual's preference should be included in the estimation model. 
+
+\newpage
+\noindent\textbf{Problem 2}
+Make your own model.
+
+~\\
+\noindent\textbf{Part (a) - Part (c)}
+The model that I write is a simple logistic model.
+
+\begin{equation*}
+Y_{i}=\left\{
+\begin{array}{rcl}
+0,       &      & {if\; P_{i}    <    0.5}\\
+1,     &      & {if\; P_{i}  \geq   0.5}
+\end{array} \right.
+\end{equation*}
+
+where
+
+\begin{equation*}
+P_{i} = \frac{1}{1+e^{-z_{i}}}
+\end{equation*}
+
+where
+
+\begin{equation*}
+z_{i} = \beta_{0}+\beta_{1}\ age_{i}+ \beta_{2}\ restriction_{i}+\beta_{3}\ job_{i}
+\end{equation*}
+The restriction variable is an overall indicator of one's attitude towards marriage. It could be calculated based on personal answers to the questions in a survey. The job variable is a dummy which manifests whether the individual has a stable job. This model is a complete data generating process.
+
+~\\
+\noindent\textbf{Part (d)}
+The key factors in the model are restriction and job. The restriction variable quantifies personal attitude towards marriage, which is indispensable in the model. The job factor is also important because material conditions are the basis for marriage. The people with a stable job tends to have more admirers and are more likely to be in a long-term relationship.
+
+~\\
+\noindent\textbf{Part (e)}
+The other potential variables to be included in this model are salary and parents' wealth. The reason that I do not include salary and wealth variables is because the data of money and asset value could easily be inauthentic. Wealthy people tend to hide and an average person is likely to boast.
+
+~\\
+\noindent\textbf{Part (f)}
+Firstly, we need to collect a dataset containing over 100 individuals' data. Each individual's data includes whether he or she is married, his or her age, overall restriction level to marriage and job indicator. Then, run the logistic regression of the marriage variable on the other three independent variables. We can see from the p-value whether the three variables are significant or not. We can also use scatterplots matrix to see the relationship. 
+
+\end{document}
+
